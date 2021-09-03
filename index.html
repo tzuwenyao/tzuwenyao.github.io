@@ -174,7 +174,7 @@
               <ul class="list-group list-group-flush" style="text-align:left">
               <li class="list-group-item"> Unique DNN Model combines connectivity and design variables </li>
               <li class="list-group-item"> Full SPICE-compatible transistor-level connectivity </li>
-              <li class="list-group-item"> Model configurable for the required path depth and feature levels </li>
+              <li class="list-group-item"> Model configurable for required path depth and feature levels </li>
               <li class="list-group-item"> DNN models automatically constructed based on input netlist </li>
               </ul>
             </div>
@@ -189,9 +189,10 @@
               <!--img class="u-max-full-width" src="img/hier.png"-->
               <ul class="list-group list-group-flush" style="text-align:left">
               <li class="list-group-item">Supports various device types / polarity / directional effects</li>
-              <li class="list-group-item">Recognizes RLC topology in series/parallel connection</li>
-              <li class="list-group-item">"Equivalent-mesh" filter reduces required amount of training data</li>
-              <li class="list-group-item">Common circuit patterns (feedback loop / power rails) are learnable</li>
+              <li class="list-group-item">Equivalent-Circuit aware models dramatically cut training dataset</li>
+              <!--li class="list-group-item">Recognizes RLC topology in series/parallel connection</li-->
+              <li class="list-group-item">"RC-mesh" pre-processor enables usage on post-layout data</li>
+              <li class="list-group-item">Common circuit patterns (feedback loop / power rails) learnable</li>
               </ul>
             </div>
           </div>
@@ -224,7 +225,8 @@
               <!--img class="u-max-full-width" src="img/hier.png"-->
               <ul class="list-group list-group-flush" style="text-align:left">
               <li class="list-group-item">Full Python-based tool environment ( core + GUI )</li>
-              <li class="list-group-item">Construct prediciton models from the OhmniScan-DNN platform</li>
+              <!--li class="list-group-item">Construct prediction models from the OhmniScan-DNN platform</li-->
+              <li class="list-group-item">Build your AI-driven design-tuning / process-porting solutions</li>
               <li class="list-group-item">Supported input format: HSpice/Spectre/GDSII</li>
               <li class="list-group-item">Self-contained platform with no cloud dependency. Data stays in house at all time</li>
               </ul>
