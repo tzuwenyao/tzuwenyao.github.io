@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OhmniView — Download</title>
+  <meta name="description" content="Download OhmniView for iOS or Android." />
+  <meta name="theme-color" content="#ffffff" />
+
+  <!-- Optional: social preview -->
+  <meta property="og:title" content="OhmniView — Download" />
+  <meta property="og:description" content="Download OhmniView for iOS or Android." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --card: #f9fafb;
+      --border: #e5e7eb;
+      --btn: #111827;
+      --btnText: #ffffff;
+      --btnAlt: #ffffff;
+      --btnAltText: #111827;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background: var(--bg);
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
+    .wrap { width: 100%; max-width: 520px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    }
+    .logo {
+      width: 56px; height: 56px;
+      border-radius: 14px;
+      background: #fff;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 12px;
+      user-select: none;
+    }
+    h1 { margin: 0 0 8px; font-size: 26px; }
+    p { margin: 0 0 16px; color: var(--muted); line-height: 1.5; }
+    .btns { display: grid; gap: 12px; margin-top: 16px; }
+    a.btn {
+      text-decoration: none;
+      padding: 14px 16px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 650;
+      border: 1px solid transparent;
+    }
+    .primary { background: var(--btn); color: var(--btnText); }
+    .secondary { background: var(--btnAlt); color: var(--btnAltText); border-color: var(--border); }
+    .fineprint { margin-top: 16px; font-size: 12px; color: var(--muted); text-align: center; }
+    .badge {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(17,24,39,0.06);
+      color: var(--text);
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="logo">
+        <img src="img/icvu_web.png" width="50">
+      </div>
+      <div class="badge" id="deviceBadge">Preparing download…</div>
+      <h1>OhmniView Download</h1>
+      <p>Choose your platform if you are not redirected automatically</p>
+
+      <div class="btns">
+        <a class="btn primary" id="androidBtn" href="https://play.google.com/store/apps/details?id=com.ohmnipath.ohmniview" rel="noopener">
+          Get it on Google Play
+        </a>
+        <a class="btn secondary" id="iosBtn" href="#" rel="noopener">
+          Download on the App Store
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // ? Replace this with your real App Store link when available:
+    const IOS_URL = "https://apps.apple.com/app/idYOUR_APP_ID";
+    const ANDROID_URL = "https://play.google.com/store/apps/details?id=com.ohmnipath.ohmniview";
+
+    const iosBtn = document.getElementById("iosBtn");
+    const androidBtn = document.getElementById("androidBtn");
+    const badge = document.getElementById("deviceBadge");
+
+    iosBtn.href = IOS_URL;
+
+    function detectPlatform() {
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+      const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      const isAndroid = /Android/.test(ua);
+
+      if (isIOS) return "ios";
+      if (isAndroid) return "android";
+      return "other";
+    }
+
+    // Optional: allow overriding via query param ?p=ios or ?p=android (useful for testing)
+    function getOverride() {
+      const p = new URLSearchParams(window.location.search).get("p");
+      if (p === "ios" || p === "android") return p;
+      return null;
+    }
+
+    const platform = getOverride() || detectPlatform();
+
+    if (platform === "ios") {
+      badge.textContent = "Detected iOS — opening the App Store…";
+      // Small delay so users see the page briefly (and analytics can fire if you add any)
+      setTimeout(() => { window.location.href = IOS_URL; }, 300);
+    } else if (platform === "android") {
+      badge.textContent = "Detected Android — opening Google Play…";
+      setTimeout(() => { window.location.href = ANDROID_URL; }, 300);
+    } else {
+      badge.textContent = "Platform Information not Detected";
+    }
+  </script>
+</body>
+</html>
