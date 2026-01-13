@@ -232,10 +232,12 @@
         </div>
 
         <div class="h5" style="margin-top:1cm">
-          OhmniView is currently in Beta. Scan the QR-code below to download.
+          OhmniView is currently in Beta. Tap or scan the QR-code below to download.
         </div>
         <div class="icon">
-          <img src="img/landingqrcode.png" width="120">
+          <a id="QRlink" href="https://apps.apple.com/us/app/ohmniview/id6746820208">
+            <img src="img/landingqrcode.png" width="120">
+          </a>
         </div>
         <div class="h5" style="margin-top:1cm">
           Enter promo code BETA90DAYS for 90-day full feature access.
@@ -384,6 +386,20 @@
       gtag('js', new Date());
 
       gtag('config', 'UA-112621117-1');
+    </script>
+
+    <script>
+      const IOS_URL = "https://apps.apple.com/us/app/ohmniview/id6746820208";
+      const ANDROID_URL = "https://play.google.com/store/apps/details?id=com.ohmnipath.ohmniview";
+
+      QRlink.href = IOS_URL;
+
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+      const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      const isAndroid = /Android/.test(ua);
+
+      if (isAndroid) QRlink.href = ANDROID_URL;
+
     </script>
 
   </body>
